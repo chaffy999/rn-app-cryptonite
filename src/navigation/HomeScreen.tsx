@@ -32,7 +32,7 @@ function HomeScreen({setIsAuthenticated}: ConnectedProps) {
 
   return (
     <Stack.Navigator
-      initialRouteName={routes.productsList}
+      initialRouteName={routes.home}
       screenOptions={{
         headerTintColor: 'white',
         headerStyle: {backgroundColor: theme.colors.primary},
@@ -51,7 +51,7 @@ function HomeScreen({setIsAuthenticated}: ConnectedProps) {
         ),
       }}>
       <Stack.Screen
-        name={routes.productsList}
+        name={routes.home}
         component={Home}
         options={{
           title: 'Home',

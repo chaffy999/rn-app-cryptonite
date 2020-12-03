@@ -1,14 +1,14 @@
 import React, {useState, useRef} from 'react';
 import {Keyboard} from 'react-native';
 import Toast from 'react-native-root-toast';
-
 import useTheme from '@/hooks/useTheme';
 import {FontAwesomeIcon} from '@fortawesome/react-native-fontawesome';
 import FontAwesomeSpin from '@/common/components/FontAwesomeSpin';
 import PasswordInput from '@/common/components/PasswordInput';
 import logoSrc from '@/assets/logo/it-akademy.png';
 import Firebase from '@/config/firebase';
-
+import {useNavigation} from '@react-navigation/native';
+import routes from '@/navigation/routes';
 import {
   Container,
   SignInButton,
@@ -18,9 +18,6 @@ import {
   LoaderWrapper,
   SignInButtonContainer,
   InputsContainer,
-  SignUpLinkContainer,
-  SignUpLink,
-  SignUpLinkText,
   LogoContainer,
   Logo,
 } from './SignIn.s';
@@ -31,7 +28,7 @@ function SignIn() {
   const [isLoading, setIsLoading] = useState(false);
   const pwdRef = useRef<any>(null);
   const theme = useTheme();
-
+  const navigation = useNavigation();
   const handleLogin = async () => {
     Keyboard.dismiss();
     setIsLoading(true);
@@ -79,10 +76,23 @@ function SignIn() {
           />
         </InputPasswordContainer>
       </InputsContainer>
-
       <SignInButtonContainer>
         <SignInButton onPress={handleLogin}>
-          <SignInButtonText>Connexion</SignInButtonText>
+          <SignInButtonText>Je me connecte</SignInButtonText>
+          {isLoading ? (
+            <LoaderWrapper>
+              <FontAwesomeSpin>
+                <FontAwesomeIcon
+                  size={25}
+                  color={theme.colors.white}
+                  icon="circle-notch"
+                />
+              </FontAwesomeSpin>
+            </LoaderWrapper>
+          ) : null}
+        </SignInButton>
+        <SignInButton onPress={() => navigation.navigate(routes.register)}>
+          <SignInButtonText>Pas encore de compte ?</SignInButtonText>
           {isLoading ? (
             <LoaderWrapper>
               <FontAwesomeSpin>
@@ -96,11 +106,6 @@ function SignIn() {
           ) : null}
         </SignInButton>
       </SignInButtonContainer>
-      <SignUpLinkContainer>
-        <SignUpLink>
-          <SignUpLinkText>Pas encore de compte ? Inscrivez-vous</SignUpLinkText>
-        </SignUpLink>
-      </SignUpLinkContainer>
     </Container>
   );
 }
