@@ -30,19 +30,12 @@ export const SignInButtonText = styled.Text`
 `;
 
 export const CryptoTable = styled.View`
-  flex: 1;
   width: 90%;
-  height: auto;
+  align-items: center;
   margin: 2% auto;
   border-width: 1px;
-  border-radius: 10px;
   border-color: #ddd;
-  border-bottom-width: 0;
-  shadow-color: #000;
-  shadow-opacity: 0.8;
-  shadow-radius: 2px;
-  elevation: 1;
-  align-items: center;
+  border-radius: 10px;
 `;
 
 export const CryptoRow = styled.TouchableOpacity`
