@@ -7,6 +7,17 @@ export const Container = styled.View`
   justify-content: center;
   padding: 0 5%;
 `;
+export const CustomText = styled.Text`
+  color: ${(props) => props.theme.colors.accent};
+  font-size: 20px;
+  margin: 10%;
+`;
+
+export const UserText = styled.Text`
+  color: ${(props) => props.theme.colors.primary};
+  font-size: 25px;
+  margin: 10%;
+`;
 
 export const InputBox = styled.TextInput`
   width: 100%;
@@ -22,7 +33,7 @@ export const InputPasswordContainer = styled.View`
   margin: 10px;
 `;
 
-export const SignInButton = styled.TouchableOpacity`
+export const RegisterButton = styled.TouchableOpacity`
   align-items: center;
   justify-content: center;
   background-color: ${(props) => props.theme.colors.primary};
@@ -32,10 +43,9 @@ export const SignInButton = styled.TouchableOpacity`
   border-radius: 5px;
   width: 100%;
   flex-direction: row;
-  margin: 10px;
 `;
 
-export const SignInButtonText = styled.Text`
+export const RegisterButtonText = styled.Text`
   font-size: 20px;
   font-weight: bold;
   color: #fff;
@@ -45,7 +55,7 @@ export const LoaderWrapper = styled.View`
   margin-left: 15px;
 `;
 
-export const SignInButtonContainer = styled.View`
+export const RegisterButtonContainer = styled.View`
   flex: 1;
   width: 100%;
   justify-content: center;
@@ -67,4 +77,4 @@ export const LogoContainer = styled.View`
   justify-content: flex-end;
 `;
 
-export const Logo = styled.Image``;
+export const Profil = styled.Image``;

@@ -7,9 +7,11 @@ import {DrawerActions, useNavigation} from '@react-navigation/native';
 import Firebase from '@/config/firebase';
 import useTheme from '@/hooks/useTheme';
 import Home from '@/scenes/home';
+import CryptoPage from '@/scenes/cryptoPage';
 import {authOperations} from '@/redux/auth';
 import {ThunkDispatchType} from '@/redux/redux.types';
 
+import Update from '@/scenes/update';
 import routes from './routes';
 import {
   HeaderLeftContainer,
@@ -32,7 +34,7 @@ function HomeScreen({setIsAuthenticated}: ConnectedProps) {
 
   return (
     <Stack.Navigator
-      initialRouteName={routes.productsList}
+      initialRouteName={routes.homeScreen}
       screenOptions={{
         headerTintColor: 'white',
         headerStyle: {backgroundColor: theme.colors.primary},
@@ -51,10 +53,48 @@ function HomeScreen({setIsAuthenticated}: ConnectedProps) {
         ),
       }}>
       <Stack.Screen
-        name={routes.productsList}
+        name={routes.homeScreen}
         component={Home}
         options={{
           title: 'Home',
+          headerRight: () => (
+            <HeaderRightContainer>
+              <IconContainer onPress={handleSignOut}>
+                <FontAwesomeIcon
+                  style={{marginRight: 10}}
+                  size={24}
+                  color="white"
+                  icon="sign-out-alt"
+                />
+              </IconContainer>
+            </HeaderRightContainer>
+          ),
+        }}
+      />
+      <Stack.Screen
+        name={routes.update}
+        component={Update}
+        options={{
+          title: 'Update',
+          headerRight: () => (
+            <HeaderRightContainer>
+              <IconContainer onPress={handleSignOut}>
+                <FontAwesomeIcon
+                  style={{marginRight: 10}}
+                  size={24}
+                  color="white"
+                  icon="sign-out-alt"
+                />
+              </IconContainer>
+            </HeaderRightContainer>
+          ),
+        }}
+      />
+      <Stack.Screen
+        name={routes.cryptoPage}
+        component={CryptoPage}
+        options={{
+          title: 'CryptoPage',
           headerRight: () => (
             <HeaderRightContainer>
               <IconContainer onPress={handleSignOut}>

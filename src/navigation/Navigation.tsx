@@ -8,6 +8,7 @@ import {authOperations} from '@/redux/auth';
 import {RootState, ThunkDispatchType} from '@/redux/redux.types';
 import SignIn from '@/scenes/signIn';
 import Splash from '@/scenes/splash';
+import Register from '@/scenes/register';
 import routes from './routes';
 import HomeScreen from './HomeScreen';
 import CustomDrawerContent from './CustomDrawerContent';
@@ -33,11 +34,18 @@ function Navigation({hasInit, isAuthenticated, authCheck}: ConnectedProps) {
 
   const renderSignInOrHomeScreen = () => {
     return isAuthenticated === false ? (
-      <Drawer.Screen
-        name={routes.signIn}
-        component={SignIn}
-        options={{swipeEnabled: false}}
-      />
+      <>
+        <Drawer.Screen
+          name={routes.signIn}
+          component={SignIn}
+          options={{swipeEnabled: false}}
+        />
+        <Drawer.Screen
+          name={routes.register}
+          component={Register}
+          options={{swipeEnabled: false}}
+        />
+      </>
     ) : (
       <Drawer.Screen name={routes.home} component={HomeScreen} />
     );
@@ -47,7 +55,7 @@ function Navigation({hasInit, isAuthenticated, authCheck}: ConnectedProps) {
     <NavigationContainer>
       <Drawer.Navigator
         drawerContent={CustomDrawerContent}
-        initialRouteName={routes.productsList}
+        initialRouteName={routes.signIn}
         screenOptions={{
           headerTintColor: 'white',
           headerStyle: {backgroundColor: theme.colors.primary},

@@ -1,10 +1,9 @@
 export default {
   home: 'Home',
+  homeScreen: 'HomeScreen',
   splash: 'Splash',
   signIn: 'SignIn',
-  signUp: 'SignUp',
-  productsList: 'ProductsList',
-  registerProductsTakePhoto: 'RegisterProductsTakePhoto',
-  registerProductsPickDate: 'RegisterProductsPickDate',
-  registerProductsConfirm: 'RegisterProductsConfirm',
+  register: 'Register',
+  cryptoPage: 'CryptoPage',
+  update: 'Update',
 };

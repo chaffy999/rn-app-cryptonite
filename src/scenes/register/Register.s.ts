@@ -22,7 +22,7 @@ export const InputPasswordContainer = styled.View`
   margin: 10px;
 `;
 
-export const SignInButton = styled.TouchableOpacity`
+export const RegisterButton = styled.TouchableOpacity`
   align-items: center;
   justify-content: center;
   background-color: ${(props) => props.theme.colors.primary};
@@ -32,10 +32,9 @@ export const SignInButton = styled.TouchableOpacity`
   border-radius: 5px;
   width: 100%;
   flex-direction: row;
-  margin: 10px;
 `;
 
-export const SignInButtonText = styled.Text`
+export const RegisterButtonText = styled.Text`
   font-size: 20px;
   font-weight: bold;
   color: #fff;
@@ -45,7 +44,7 @@ export const LoaderWrapper = styled.View`
   margin-left: 15px;
 `;
 
-export const SignInButtonContainer = styled.View`
+export const RegisterButtonContainer = styled.View`
   flex: 1;
   width: 100%;
   justify-content: center;
