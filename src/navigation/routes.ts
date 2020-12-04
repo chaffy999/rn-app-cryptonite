@@ -3,5 +3,6 @@ export default {
   splash: 'Splash',
   signIn: 'SignIn',
   register: 'Register',
+  cryptoPage: 'CryptoPage',
   update: 'Update',
 };

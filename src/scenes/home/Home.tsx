@@ -1,9 +1,12 @@
 import React, {useEffect, useState} from 'react';
 import {RefreshControl} from 'react-native';
+import {useNavigation} from '@react-navigation/native';
+import bandeauSrc from '@/assets/logo/bandeau.png';
+import routes from '@/navigation/routes';
 import {
   Container,
   CryptoTable,
-  TitleText,
+  TitleImage,
   CryptoRow,
   CryptoLogo,
   Logo,
@@ -15,19 +18,29 @@ import {
   CryptoPercentNegative,
 } from './Home.s';
 
-function round(value, precision) {
-  const multiplier = Math.pow(10, precision || 0);
+function round(value: number, precision: number) {
+  const multiplier = Math.pow(10, precision || 0); // eslint-disable-line no-restricted-properties
   return Math.round(value * multiplier) / multiplier;
 }
 
-const wait = (timeout) => {
+const wait = (timeout: number) => {
   return new Promise((resolve) => {
     setTimeout(resolve, timeout);
   });
 };
 
+interface CryptoData {
+  id: string;
+  rank: number;
+  symbol: string;
+  name: string;
+  changePercent24Hr: number;
+  priceUsd: number;
+}
+
 function Home() {
-  const [crypto, setCrypto] = useState<any>([]);
+  const navigation = useNavigation();
+  const [crypto, setCrypto] = useState<CryptoData[]>([]);
   useEffect(() => {
     const getCryptoAsync = async () => {
       try {
@@ -63,10 +76,15 @@ function Home() {
       refreshControl={
         <RefreshControl refreshing={refreshing} onRefresh={onRefresh} />
       }>
-      <TitleText>Cryptonite</TitleText>
+      <TitleImage source={bandeauSrc} />
       <CryptoTable>
-        {crypto.map((line, index) => (
-          <CryptoRow>
+        {crypto.map((line) => (
+          <CryptoRow
+            onPress={() =>
+              navigation.navigate(routes.cryptoPage, {
+                id: line.id,
+              })
+            }>
             <CryptoLogo>
               <Logo
                 source={{
@@ -79,7 +97,7 @@ function Home() {
               <CryptoSymbol>{line.symbol}</CryptoSymbol>
             </CryptoInfo>
             <CryptoInfo>
-              <CryptoPrice>${line.priceUsd.substring(0, 10)}</CryptoPrice>
+              <CryptoPrice>${round(line.priceUsd, 5)}</CryptoPrice>
               {line.changePercent24Hr > 0 && (
                 <CryptoPercentPositive>
                   {round(line.changePercent24Hr, 2)}%
