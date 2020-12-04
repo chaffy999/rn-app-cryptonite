@@ -1,8 +1,10 @@
 import React, {useState, useRef} from 'react';
-import {Keyboard} from 'react-native';
+import {ToastAndroid, Keyboard} from 'react-native';
 import PasswordInput from '@/common/components/PasswordInput';
 import logoSrc from '@/assets/logo/it-akademy.png';
 import Firebase from '@/config/firebase';
+
+import Toast from 'react-native-root-toast';
 
 import {
   Container,
@@ -25,15 +27,24 @@ function Register() {
     Firebase.auth()
       .createUserWithEmailAndPassword(email, password)
       .then(() => {
-        console.log('User account created & signed in!');
+        ToastAndroid.show(
+          'Votre compte à été crée et vous êtes connecté',
+          ToastAndroid.LONG,
+        );
       })
       .catch((error: any) => {
         if (error.code === 'auth/email-already-in-use') {
-          console.log('That email address is already in use!');
+          ToastAndroid.show(
+            'Cette adresse e-mail est déjà utilisé',
+            ToastAndroid.LONG,
+          );
         }
 
         if (error.code === 'auth/invalid-email') {
-          console.log('That email address is invalid!');
+          ToastAndroid.show(
+            'Cette adresse e-mail est invalide',
+            ToastAndroid.LONG,
+          );
         }
 
         console.error(error);
