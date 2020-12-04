@@ -26,7 +26,7 @@ function CustomDrawerContent(props: DrawerContentComponentProps) {
         <Content>
           <DrawerItem
             label="Home"
-            onPress={() => props.navigation.navigate(routes.home)}
+            onPress={() => props.navigation.navigate(routes.homeScreen)}
           />
           <DrawerItem
             label="Profil"
