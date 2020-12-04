@@ -3,4 +3,5 @@ export default {
   splash: 'Splash',
   signIn: 'SignIn',
   register: 'Register',
+  update: 'Update',
 };

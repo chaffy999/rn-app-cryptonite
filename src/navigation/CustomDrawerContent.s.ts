@@ -28,7 +28,8 @@ export const TextHeader = styled.Text`
 `;
 
 export const Footer = styled.View`
-  position: absolute;
+  flex: 1;
+  align-self: auto;
   height: 56px;
   padding-left: 24px;
   bottom: 0px;

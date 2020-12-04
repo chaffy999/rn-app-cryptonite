@@ -10,6 +10,7 @@ import Home from '@/scenes/home';
 import {authOperations} from '@/redux/auth';
 import {ThunkDispatchType} from '@/redux/redux.types';
 
+import Update from '@/scenes/update';
 import routes from './routes';
 import {
   HeaderLeftContainer,
@@ -55,6 +56,25 @@ function HomeScreen({setIsAuthenticated}: ConnectedProps) {
         component={Home}
         options={{
           title: 'Home',
+          headerRight: () => (
+            <HeaderRightContainer>
+              <IconContainer onPress={handleSignOut}>
+                <FontAwesomeIcon
+                  style={{marginRight: 10}}
+                  size={24}
+                  color="white"
+                  icon="sign-out-alt"
+                />
+              </IconContainer>
+            </HeaderRightContainer>
+          ),
+        }}
+      />
+      <Stack.Screen
+        name={routes.update}
+        component={Update}
+        options={{
+          title: 'Update',
           headerRight: () => (
             <HeaderRightContainer>
               <IconContainer onPress={handleSignOut}>

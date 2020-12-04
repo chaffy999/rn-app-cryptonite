@@ -3,7 +3,11 @@ import {Text} from 'react-native';
 import {
   DrawerContentScrollView,
   DrawerContentComponentProps,
+  DrawerItem,
 } from '@react-navigation/drawer';
+
+import routes from '@/navigation/routes';
+
 import {
   Container,
   Header,
@@ -14,18 +18,23 @@ import {
 
 function CustomDrawerContent(props: DrawerContentComponentProps) {
   return (
-    <DrawerContentScrollView
-      {...props}
-      contentContainerStyle={{paddingTop: 0, flex: 1}}>
+    <DrawerContentScrollView {...props}>
       <Container>
         <Header>
-          <TextHeader>Header</TextHeader>
+          <TextHeader>Menu</TextHeader>
         </Header>
         <Content>
-          <Text>Content</Text>
+          <DrawerItem
+            label="Home"
+            onPress={() => props.navigation.navigate(routes.home)}
+          />
+          <DrawerItem
+            label="Profil"
+            onPress={() => props.navigation.navigate(routes.update)}
+          />
         </Content>
         <Footer>
-          <Text>Footer</Text>
+          <Text>Copyright © Cryptonite</Text>
         </Footer>
       </Container>
     </DrawerContentScrollView>
